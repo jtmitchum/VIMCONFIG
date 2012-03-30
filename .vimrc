@@ -35,10 +35,11 @@ let g:Tex_ViewRule_pdf = 'Preview'
 
 "Turn on Conceal feature which I thought would be cool. 
 set cole=2
-hi Conceal guibg=black guifg=white
+hi Conceal guibg=Black guifg=White
 
 "This loads my plugins for me - by default stored in bundles/
 call pathogen#infect()
+call pathogen#helptags()
 filetype plugin indent on
 set modelines=0
 set encoding=utf-8
