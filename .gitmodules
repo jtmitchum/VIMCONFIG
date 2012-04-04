@@ -25,3 +25,6 @@
 [submodule "bundle/obviousmode"]
 	path = bundle/obviousmode
 	url = git://github.com/bsl/obviousmode.git
+[submodule "bundle/MatLabFilesEdition"]
+	path = bundle/MatLabFilesEdition
+	url = git://github.com/vim-scripts/MatlabFilesEdition.git
