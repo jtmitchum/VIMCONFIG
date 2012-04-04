@@ -22,3 +22,6 @@
 [submodule "bundle/minibuf_mod"]
 	path = bundle/minibuf_mod
 	url = git://github.com/fholgado/minibufexpl.vim.git
+[submodule "bundle/obviousmode"]
+	path = bundle/obviousmode
+	url = git://github.com/bsl/obviousmode.git
