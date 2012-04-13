@@ -28,3 +28,9 @@
 [submodule "bundle/MatLabFilesEdition"]
 	path = bundle/MatLabFilesEdition
 	url = git://github.com/vim-scripts/MatlabFilesEdition.git
+[submodule "bundle/syntastic"]
+	path = bundle/syntastic
+	url = https://github.com/scrooloose/syntastic.git
+[submodule "bundle/tagbar"]
+	path = bundle/tagbar
+	url = git://github.com/majutsushi/tagbar
