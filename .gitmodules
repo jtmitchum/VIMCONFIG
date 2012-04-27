@@ -31,21 +31,9 @@
 [submodule "bundle/tagbar"]
 	path = bundle/tagbar
 	url = git://github.com/majutsushi/tagbar
-[submodule "bundle/Garbas"]
-	path = bundle/Garbas
-	url = https://github.com/garbas/vim-snipmate.git
-[submodule "tlib_vim"]
-	path = tlib_vim
-	url = https://github.com/tomtom/tlib_vim.git
-[submodule "bundle/tlib_vim"]
-	path = bundle/tlib_vim
-	url = https://github.com/tomtom/tlib_vim.git
 [submodule "bundle/MWTools"]
 	path = bundle/MWTools
 	url = https://github.com/MarcWeber/vim-addon-mw-utils.git
-[submodule "bundle/snippets"]
-	path = bundle/snippets
-	url = https://github.com/honza/snipmate-snippets.git
 [submodule "bundle/VMarkdownPreview"]
 	path = bundle/VMarkdownPreview
 	url = git://github.com/nelstrom/vim-markdown-preview.git

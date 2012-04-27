@@ -1,0 +1,92 @@
+# LaTeX Template trigger
+snippet article
+		%  Created by James Mitchum on April 24, 2012
+		%  jtmitchum@gmail.com
+		
+		
+		\documentclass[titlepage, 12pt]{article}
+		
+		% Fonts set-up per Mr. Mitchum
+		\usepackage{kpfonts}
+		\usepackage[T1]{fontenc}
+		
+		% Comment out the following line for serif fonts with a good Math Tex support
+		\renewcommand{\familydefault}{\sfdefault}
+		
+		% Use utf-8 encoding for foreign characters
+		\usepackage[utf8]{inputenc}
+		
+		% Setup for fullpage use
+		\usepackage{fullpage}
+		\usepackage{color}
+		\usepackage{xcolor}
+		
+		% Stops floats from going into other sections - must print them out prior to new section
+		\usepackage[section]{placeins} 
+		% Uncomment some of the following if you use the features
+		%
+		% Running Headers and footers
+		%\usepackage{fancyhdr}
+		% Multipart figures
+		%\usepackage{subfigure}
+		% More symbols
+		\usepackage{amsmath}
+		%\usepackage{amssymb}
+		%\usepackage{latexsym}
+		% Surround parts of graphics with box
+		\usepackage{boxedminipage}
+		
+		% Package for including code in the document
+		\usepackage{listings}
+		% Options below control how titling of code listings look
+		\usepackage{caption}
+		\DeclareCaptionFont{white}{\color{white}}
+		\DeclareCaptionFormat{listing}{\colorbox{gray}{\parbox{\textwidth}{#1#2#3}}}
+		\captionsetup[lstlisting]{format=listing,labelfont=white,textfont=white}
+		% \DeclareCaptionFont{white}{\color{white}}
+		% \DeclareCaptionFormat{listing}{\colorbox[cmyk]{0.43, 0.35, 0.35,0.01}{\parbox{\textwidth}{\hspace{15pt}#1#2#3}}}
+		% \captionsetup[lstlisting]{format=listing,labelfont=white,textfont=white, singlelinecheck=false, margin=0pt, font={bf,footnotesize}}
+		
+		%Improves Verbatim input - useful for non-standard language input listing
+		\usepackage{fancyvrb}
+		\usepackage[protrusion=true, expansion=true]{microtype}
+		% \usepackage{courier}
+		
+		% Language can be changed here, or commented out and added to individual listings - or overridden. 
+		\lstset{
+		language=Matlab,
+		basicstyle=\footnotesize\ttfamily,
+		numbers=left,
+		numberstyle=\tiny,
+		frame=tb,
+		columns=fullflexible,
+		showstringspaces=false,
+		stepnumber = 2,
+		breaklines=true
+		}
+		% If you want to generate a toc for each chapter (use with book)
+		% \usepackage{minitoc}
+		
+		% This is now the recommended way for checking for PDFLaTeX:
+		\usepackage{ifpdf}
+		
+		\ifpdf 
+		\usepackage[pdftex]{graphicx} \else 
+		\usepackage{graphicx} \fi
+		
+		
+		\title{${1:James Mitchum}} 
+		\author{${2:`g:snips_author`}}
+		
+		\date{${3:date}}
+		
+		\begin{document}
+		
+		\ifpdf \DeclareGraphicsExtensions{.png, .pdf, .jpg, .tif} \else \DeclareGraphicsExtensions{.eps, .jpg} \fi
+		
+		\maketitle
+		${4}	
+		\end{document}
+
+snippet ind
+		\index ${1}  

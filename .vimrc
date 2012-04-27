@@ -1,6 +1,9 @@
+set nocompatible
+
 syntax on
 
-"Set some better backup directory options"
+set ts=4 "Much more reasonable Tab size"
+"Set some better backup directory options
 " Save your backups to a less annoying place than the current directory.
 " If you have .vim-backup in the current directory, it'll use that.
 " Otherwise it saves it to ~/.vim/backup or . if all else fails.
@@ -14,10 +17,16 @@ set backupdir^=~/.vim/backup/
 set backupdir^=./.vim-backup/
 set backup
 
-" TAGBAR setup for CTAGS"
+"Powerline setting
+let g:Powerline_symbols = 'fancy'
+" TAGBAR setup for CTAGS
 let g:tagbar_ctags_bin='/usr/local/bin/ctags'  " Proper Ctags locations
 let g:tagbar_width=26                          " Default is 40, seems too wide
 nnoremap <leader>y :TagbarToggle<cr>   
+
+" Gundo leader settin
+nnoremap  <leader>gu  :GundoToggle<cr>
+
 "Save your swp files to a less annoying place than the current directory.
 " If you have .vim-swap in the current directory, it'll use that.
 " Otherwise it saves it to ~/.vim/swap, ~/tmp or .
@@ -28,7 +37,7 @@ set directory=./.vim-swap//
 set directory+=~/.vim/swap//
 set directory+=~/tmp//
 set directory+=.
-
+	
 " viminfo stores the the state of your previous editing session
 set viminfo+=n~/.vim/viminfo
 
@@ -49,8 +58,6 @@ endif
 set guioptions-=T
 set guioptions-=m
 
-"Make it easier to insert newlines without leaving command mode
-"map <CR> d}o<ESC>p:-1<CR>$ 
 
 "map <S-Enter> O<ESC>j
 set fillchars=vert:│
@@ -61,29 +68,25 @@ let $DYLD_LIBRARY_PATH="/Applications/MATLAB_R2011b.app/sys/os/maci64:/Applicati
 set showmatch
 
 set backspace=indent,eol,start
-set nocompatible
 
 "Set Colorscheme - I like this one because I can read comments
 colorscheme vividchalk
-""au FocusGained * :colorscheme vividchalk
-""au FocusLost * :colorscheme wombat 
 
-"Experimental Justin Shit
-set statusline=%F\ \ %m%r%h%w\ \ \ \ TYPE=%{&ff}:%Y\ \ \ \ BUF=%n\ %=\ [ASCII=\%03.3b\ :\ HEX=\%02.2B]\ \ \ \ [COL=%v\ :\ LINE=%l\ :\ %L\ lines\ :\ %p%%]\ 
-"This option is for Tex I believe
 filetype off
+
 " This is for mlint - a matlab compiler that reports errors
 autocmd BufEnter *.m    compiler mlint 
 
 
-" Set preview program for PDF's
-let g:Tex_ViewRule_pdf = 'Preview'
-let g:LatexBox_viewer = 'open'
-let g:LatexBox_latexmk_options='-pvc'
+"Set preview program for PDF's
+
+let g:Tex_ViewRule_pdf ='Preview'
+let g:LatexBox_viewer ='open'
+let g:LatexBox_latexmk_options='-pvc' 
 
 
-"These are for Latex-Box"
-	imap [[ 		\begin{
+"These are for Latex-Box
+	imap [[ 	\begin{
 	imap ]]		<Plug>LatexCloseCurEnv
 
 "This loads my plugins for me - by default stored in bundles/
@@ -137,19 +140,23 @@ set gdefault
 set incsearch
 set showmatch
 set hlsearch
+set shiftwidth=4
+set smarttab
 nnoremap <leader><space> :noh<cr>
-nnoremap <leader>nt :NERDTree<cr>
-
+nnoremap <leader>nt :NERDTreeToggle<cr>
+nnoremap ; :
+"Other Remaps"
+nmap <silent> <leader>ev :e $MYVIMRC<cr>
+nmap <silent> <leader>sv :so $MYVIMRC<cr>
 "Leader Commands
-nnoremap <leader>b  d}<esc>p:-1<cr>$
+nnoremap <leader>b  d}<esc>p:0<cr>$
 
 
 nnoremap <tab> %
 vnoremap <tab> %
-"nnoremap j gj
-"nnoremap k gk
+nnoremap j gj
+nnoremap k gk
 nnoremap <leader>q gqip
 inoremap ii <ESC>
-let tlist_tex_settings   = 'latex;s:sections;g:graphics;l:labels'
-let tlist_make_settings  = 'make;m:makros;t:targets'
-let g:snips_author = 'JT Mitchum'
+"let tlist_tex_settings   = 'latex;s:sections;g:graphics;l:labels'
+"let tlist_make_settings  = 'make;m:makros;t:targets'
