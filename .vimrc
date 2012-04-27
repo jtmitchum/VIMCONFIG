@@ -108,9 +108,9 @@ set laststatus=2
 
 "Line numbers are relative from cursor position - Not sure if I like it yet or
 "not!
-set relativenumber
-set undofile
-
+"set relativenumber
+"" Show line numbers
+set nu
 "If I change focus, save the file - even if temporarily
 au FocusLost * :wa
 au FocusLost * silent! wa
@@ -122,7 +122,9 @@ hi Conceal guibg=Black guifg=White ctermbg=black ctermfg=white
 highlight CursorLine cterm=none ctermbg=234
 "Set mapleader to , - surely faster than \
 let mapleader = ","
+" map local leader to the same - this might cause problems"
 
+let maplocalleader=","
 
 "Make a new vertical split window
 nnoremap <leader>w <C-w>v<C-w>l
@@ -144,9 +146,10 @@ nnoremap <leader>b  d}<esc>p:-1<cr>$
 
 nnoremap <tab> %
 vnoremap <tab> %
-nnoremap j gj
-nnoremap k gk
+"nnoremap j gj
+"nnoremap k gk
 nnoremap <leader>q gqip
 inoremap ii <ESC>
 let tlist_tex_settings   = 'latex;s:sections;g:graphics;l:labels'
 let tlist_make_settings  = 'make;m:makros;t:targets'
+let g:snips_author = 'JT Mitchum'
