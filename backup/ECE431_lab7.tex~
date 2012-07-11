@@ -1,0 +1,190 @@
+
+%  Created by James Mitchum on 2011-03-14.
+%  
+\documentclass[titlepage, 12pt]{article}
+
+%Fonts set-up per Mr. Mitchum
+\usepackage{kpfonts}
+\renewcommand{\familydefault}{\sfdefault}
+% Use utf-8 encoding for foreign characters
+\usepackage[utf8]{inputenc}
+
+% Setup for fullpage use
+\usepackage{fullpage}
+\usepackage{multirow}
+% Uncomment some of the following if you use the features
+%
+% Running Headers and footers
+%\usepackage{fancyhdr}
+% Multipart figures
+%\usepackage{subfigure}
+% More symbols
+%\usepackage{amsmath}
+%\usepackage{amssymb}
+%\usepackage{latexsym}
+% Surround parts of graphics with box
+\usepackage{boxedminipage}
+\usepackage{circuitikz}
+%This package keeps floats in their respective sections - not necessarily where you want them, but definitely not bleeding into another section
+\usepackage[section]{placeins} 
+\usepackage{wrapfig}
+% Package for including code in the document
+\usepackage{caption}
+\usepackage{listings}
+%\DeclareCaptionFont{white}{\color{white}}
+%\DeclareCaptionFormat{listing}{\colorbox[cmyk]{0.43, 0.35, 0.35,0.01}{\parbox{\textwidth}{\hspace{15pt}#1#2#3}}}
+\captionsetup[lstlisting]{format=listing,labelfont=white,textfont=white, singlelinecheck=false, margin=0pt, font={bf,footnotesize}}
+\usepackage{fancyvrb}
+\usepackage{courier}
+\lstset{
+%language=Matlab,
+basicstyle=\footnotesize\ttfamily,
+numbers=left,
+numberstyle=\tiny,
+frame=tb,
+columns=fullflexible,
+showstringspaces=false,
+stepnumber = 2
+}
+% If you want to generate a toc for each chapter (use with book)
+% \usepackage{minitoc}
+
+% This is now the recommended way for checking for PDFLaTeX:
+\usepackage{ifpdf}
+
+%\newif\ifpdf
+%\ifx\pdfoutput\undefined
+%\pdffalse % we are not running PDFLaTeX
+%\else
+%\pdfoutput=1 % we are running PDFLaTeX
+%\pdftrue
+%\fi
+\ifpdf 
+\usepackage[pdftex]{graphicx} \else 
+\usepackage{graphicx} \fi
+
+\title{ECE 431 Spring 2011\\ Experiment 7: Current Mirrors and Active Loads\\} 
+\author{J.T. Mitchum\\Student ID: 16054285}
+
+\date{Performed on: 03-06-2012\\Due on: 04-03-2012}
+
+\begin{document}
+
+\ifpdf 
+\DeclareGraphicsExtensions{.pdf,.jpg,.tif} \else \DeclareGraphicsExtensions{.eps,.jpg} \fi
+
+\maketitle
+
+\section{Objective}
+This experiment examines NMOS and PMOS current mirrors and facilitates their importance by using them as the active loads for their counter-part PMOS and NMOS transistor amplifiers. 
+\section{Equipment and Software} % (fold)
+\label{sec:equipment_and_software}
+\begin{itemize}
+	\item Digilent Exploerer
+	\item CD4007UB MOSFET Transistor Array
+	\item Multimeter
+	\item Resistors (1) 10 M$\Omega$, (2) $10 k\Omega$, (1) $5k\Omega$, (2) Variable Pot resistors, and any others  
+\end{itemize}
+
+% section equipment_and_software (end)
+\section{Procedure} % (fold)
+\label{sec:procedure}
+\subsection{Pre-Lab} % (fold)
+\label{sub:Pre-Lab}
+Design an NMOS and PMOS current mirror with the given parameters and using the following relationships/approximations:
+
+\begin{itemize}
+	\item Assume $K_n = 0.26 mA/V^2$
+	\item Assume $V_{TN} = 1.2 V$
+	\item Provide a reference current of $I_{REF} = 0.6 mA$
+	\item Compute a necessary value of $R_{REF}$
+	\item Assume $V^+ = 9V \; ; V^- = 0V$
+	\item Use the relationship $I_{REF} = K_{n|p}\left(V_{GS1} - V_{TN1}\right )^2 = \frac{[(V^+ - V^-)-V_{GS1}]}{R_{REF}}$
+
+\end{itemize}
+% subsection Pre-Lab (end)
+\begin{itemize}
+	\item Design a NMOS and PMOS MOSFET amplifier to go with the PMOS and NMOS current mirros (respectively) 
+	\item Mark a diagram with the pin designations, noting the use of the $10 M\Omega$ resistor for gate biasing. 
+\end{itemize}
+\begin{center}
+	\centering
+	\includegraphics[width=5 in]{Lab7CurrentMirrorDiagram.png}
+\end{center}
+\begin{center}
+	\centering
+	\includegraphics[width=15 cm ]{CDDiagram.png}
+\end{center}
+\begin{center}
+	\centering
+	\includegraphics[width=5 in]{Amplifier.png}
+\end{center}
+\subsection{PreLab Calculations} % (fold)
+\label{sub:PreLabCalculations}
+After computing for both NMOS and PMOS current mirrors, I found $R_{REF}$ of $10.8 k\Omega$ and $10.5 k\Omega$ respectively. The calculation sheet is attached for review at the end of this report. 
+% subsection PreLab Calculations (end)
+\section{Experiment} % (fold)
+\label{sec:Experiment}
+\subsection{Procedure} % (fold)
+\label{sub:Procedure}
+\begin{itemize}
+	\item Put together NMOS mirror and adjust a variable resistor to ensure $0.6 mA$ through the $R_{REF}$ resistor. 
+	\item Using $(2) 10k\Omega$ pots in series between the 9V source and $M_2$ Drain, adjust from 2V to 9 V in 0.5 increments and:
+		\begin{itemize}
+			\item measure the Current
+			\item estimate $\lambda$ from these values
+		\end{itemize}
+	\item Repeat for PMOS current Mirror
+	\item Now build the NMOS Amplifier
+	\item Input a 1 kHz signal and adjust the input so the signal is not distorted. 
+	\item Record the output using the DE oscilloscope. 
+	\item Adjust the input until you observe distortion, and estimate signal swing
+	\item Increase the frequency until the output is 70.7\% of the midband value. 
+	\item Repeat these last 5 steps for the NMOS amplifier. 
+\end{itemize}
+% subsection Procedure (end)
+\subsection{Results} % (fold)
+\label{sub:Results}
+For the Current mirrors, the below tables show the collected data.
+\newline
+\begin{tabular}{c c c}
+	\hline
+	\textbf{Volts} & \textbf{$I_d$ NMOS} & \textbf{$I_d$ PMOS} \\
+			    2 & 0.618 & 0.575 \\
+			    2.5 & 0.621 & 0.601 \\
+			    3.0&0.624 & 0.624 \\
+	     3.5 & 0.627 & 0.646 \\
+	     4.0 & 0.63 & 0.667 \\
+	     4.5 & 0.632 & 0.686 \\
+	     5.0 & 0.634 & 0.706 \\
+	     5.5 & 0.636 & 0.725 \\
+	     6.0 & 0.638 & 0.743 \\
+	     6.5 & 0.64 & 0.76 \\
+	     7.0 & 0.642 & 0.779 \\
+	     7.5 & 0.644 & 0.797 \\
+	     8.0 &  0.646 & 0.814\\
+	     8.5 & 0.648 &  0.832 \\
+	     9.0 & 0.65 & 0.85 \\ \hline
+\end{tabular}
+% subsection Results (end)
+\newline
+$\lambda$ can be found from a previous MatLab script used in Experiment 6. I have reworked the script and applied the data given thus far. $\lambda$ for NMOS current mirror was -0.0122 and $\lambda$ for the PMOS current mirror was -0.2292. 
+\begin{center}
+\lstinputlisting[title=MatLab Code]{lambda.m}
+\end{center}
+\section{Conclusions} % (fold)
+\label{sec:Conclusions}
+We had great difficulty getting the circuit to operate correctly. Not all the errors are recorded as frustration built, more time was spent rebuilding the circuit and attempting to get working mirrors at first, and then attempts at getting working amplifiers second. 
+
+No good amplifier ever was constructed successfully and we are no more clear as to why this was the case. Hence, there are no output pictures for oscilloscope data for amplifiers and I've elected, given the sheer time given to the experiment, to ignore any Pspice attempts as there is no data to compare it against. 
+
+This also means that no corner frequencies were established, and thus those sections are also not available. 
+\subsection{Circuitikz} % (fold)
+\label{sub:Circuitikz}
+\begin{circuitikz}
+\draw (0,0) to[R, 1=$R_1$] (2,0);
+\end{circuitikz}
+% subsection Circuitikz (end)
+% section Conclusions (end)
+% section Experiment (end)
+\end{document}

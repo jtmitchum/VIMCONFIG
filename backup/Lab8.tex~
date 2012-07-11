@@ -1,0 +1,176 @@
+
+%  Created by James Mitchum on 2011-03-14.
+%  
+\documentclass[titlepage, 12pt]{article}
+
+%Fonts set-up per Mr. Mitchum
+\usepackage{kpfonts}
+% Sans Serif Fonts - not ideal for long reading by the by
+\renewcommand{\familydefault}{\sfdefault}
+
+% Use utf-8 encoding for foreign characters
+\usepackage[utf8]{inputenc}
+
+% Setup for fullpage use
+\usepackage{fullpage}
+\usepackage{multirow}
+% Uncomment some of the following if you use the features
+%
+% Running Headers and footers
+%\usepackage{fancyhdr}
+% Multipart figures
+%\usepackage{subfigure}
+% More symbols
+%\usepackage{amsmath}
+%\usepackage{amssymb}
+%\usepackage{latexsym}
+% Surround parts of graphics with box
+\usepackage{boxedminipage}
+
+%utilizes TikZ package to make circuit diagrams
+\usepackage{circuitikz}
+
+%This package keeps floats in their respective sections - not necessarily where you want them, but definitely not bleeding into another section
+\usepackage[section]{placeins} 
+
+\usepackage{wrapfig}
+% Package for including code in the document
+\usepackage{caption}
+\usepackage{listings}
+%\DeclareCaptionFont{white}{\color{white}}
+%\DeclareCaptionFormat{listing}{\colorbox[cmyk]{0.43, 0.35, 0.35,0.01}{\parbox{\textwidth}{\hspace{15pt}#1#2#3}}}
+\captionsetup[lstlisting]{format=listing,labelfont=white,textfont=white, singlelinecheck=false, margin=0pt, font={bf,footnotesize}}
+\usepackage{fancyvrb}
+\usepackage{courier}
+\lstset{
+%language=Matlab,
+basicstyle=\footnotesize\ttfamily,
+numbers=left,
+numberstyle=\tiny,
+frame=tb,
+columns=fullflexible,
+showstringspaces=false,
+stepnumber = 2
+}
+% If you want to generate a toc for each chapter (use with book)
+% \usepackage{minitoc}
+
+% This is now the recommended way for checking for PDFLaTeX:
+\usepackage{ifpdf}
+%\newif\ifpdf
+%\ifx\pdfoutput\undefined
+%\pdffalse % we are not running PDFLaTeX
+%\else
+%\pdfoutput=1 % we are running PDFLaTeX
+%\pdftrue
+%\fi
+
+
+\title{ECE 431 Spring 2011\\ Experiment 8: BJT Differential Amplifiers \\} 
+\author{J.T. Mitchum\\Student ID: 16054285}
+
+\date{Performed on: 04-03-2012\\Due on: 04-10-2012}
+
+\begin{document}
+
+\ifpdf 
+\DeclareGraphicsExtensions{.pdf,.jpg,.tif} \else \DeclareGraphicsExtensions{.eps,.jpg} \fi
+
+\maketitle
+
+\section{Objective}
+To experiment with differential amplifiers (specifically BJT differential amplifiers) and their design and analysis. 
+\section{Equipment and Software} % (fold)
+\label{sec:equipment_and_software}
+\begin{itemize}
+	\item Digilent Exploerer
+	\item CA4036 Transistor Array
+	\item Multimeter
+	\item Resistors as needed by design 
+\end{itemize}
+\section{Figure} % (fold)
+\label{sec:Figure}
+\begin{figure}
+\begin{center}
+	\includegraphics[width=5 in]{BJTDiffAmp.png}
+\end{center}
+\caption{BJT Differential Amplifier Diagram}
+\label{fig:}
+\end{figure}
+\section{Calculations} % (fold)
+\label{sec:Calculations}
+As suggested by Professor Knopp, the Pre-Lab calculations were performed in a MatLab script; however, I didn't really understand how to use PSpice to interpret whether I had good values or not. 
+
+The MatLab script and Pspice attempt have been included as proof of attempt. 
+
+\begin{center}
+	\lstinputlisting[title=MatLab Code]{Lab8.m}
+
+\end{center}
+\begin{center}
+	\lstinputlisting[title=Pspice Code]{Lab8diffdactran.cir}
+\end{center}
+\section{Resistor Values} % (fold)
+\label{sec:ResistorValues}
+
+\begin{center}
+	\centering
+	\begin{tabular}{c c}
+	\hline
+	\textbf{Resistor} & \textbf{Value in $\Omega$} \\
+	\hline
+	$R_{C1}$ & 15 k \\
+	$R_{C2}$ & 15k \\
+	$R_o$ & 17k\\
+	\end{tabular}
+\end{center}
+
+\begin{center}
+\begin{tabular}{c c c}
+\hline
+\textbf{Tranny} & \textbf{Voltage} & \textbf{Current} \\
+\hline
+$Q_{C2}$ & 8.98V & $1.33 \mu A$ \\
+$Q_{E2}$ & 0.02V & \\
+$Q_{C4} $ & 0.02V & \\
+$Q_{E4}$ & 0.00V & 0.00 A\\
+\hline
+\textbf{Tranny @ 900 mV} & \textbf{Voltages} & \textbf{Current} \\
+\hline
+$Q_{C2}$&0.14V& \\
+$Q_{E2}$&0.11V& \\
+$Q_{C4}$&0.11V&\\
+$Q_{E4}$ & 0.00V& \\
+\hline
+\end{tabular}
+\end{center}
+% section Resistor Values (end)
+\section{Data} % (fold)
+\label{sec:Data}
+\begin{figure}
+\begin{center}
+ 	\includegraphics[width=5 in]{DiffAmpStep4.png} 
+\end{center}
+\caption{Step 4 Differential Amplifier}
+\label{fig:}
+\end{figure}
+\begin{figure}
+\begin{center}
+    \includegraphics[width=5 in]{DAstep460Hz.png}
+\end{center}
+\caption{Diff Amplifier at 60 Hz}
+\label{fig:}
+\end{figure}
+\begin{figure}
+\begin{center}
+    \includegraphics[width=5 in]{DAstep7.png}
+\end{center}
+\caption{Step 7 }
+\label{fig:}
+\end{figure}
+% section Data (end)
+% section Calculations (end)
+% section Figure (end)
+% section equipment_and_software (end)
+\end{document}
+

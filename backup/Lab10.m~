@@ -1,0 +1,67 @@
+%James Mitchum April 11, 2012
+% y[n] -1.1y[n-1]+0.3y[n-2]=0; y[-1]=9;y[-2]=49/3
+
+n = -5:1:10';
+y=[102.43; 55.1; 29.88; 9; 49/3; zeros(length(n)-6, 1)];
+for k=3:length(n)
+	y(k)=1.1*y(k-1)-0.3*y(k-2);
+end
+	
+clf;
+figure(1)
+stem(n,y,'k');
+xlabel('n');
+ylabel('y[n]');
+
+disp(' n       y');
+title('Lab 10 Part 1')
+
+%Part 2
+% y[n]=(2.*(.5).^n+3.*(0.6).^n).*u[n]
+figure(2)
+f=inline('(2.*(.5).^n+3.*(0.6).^n).*(n>-5)', 'n');
+
+n=-5:1:10;
+
+stem(n, f(n), 'k')
+
+figure(3)
+x = inline('n==0');
+n = -5:1:10;
+[Y] = filter([5 0 0], [1 -0.6 -0.16], x(n));
+stem(n, Y, 'o');
+
+% Part III # 3
+ 
+n = 0:1:20;
+x = (0.8).^(n).*(n>=0 & n<20);
+g = 1.*(n>=3 & n<20);
+figure(4)
+n = (0:1:length(x) + length(g) -2);
+c=conv(x,g);
+clf;
+stem(n,c,'k');
+
+%Part III # 4
+ 
+%-5.*((0.8).^(n-2)-1).*u[n-3]
+figure(5)
+%n=0:1:40;
+x=-5.*((0.8).^(n-2)-1.*(n>=3));
+h = 1.*(n>=3 & n<40);
+n = (0:1:length(x) + length(h)-2);
+c = conv(x,h);
+%clf;
+stem(n, c, 'k');
+figure(6)
+
+% y[n] - 5y[n-1] +6y[n-2] = x[n-1] + 5x[n-2]
+% x[n] = (3.*n+5).*(n>=0)
+n=0:1:80;
+x = inline('(3.*n+5).*(n>=0)');
+y = filter([0 1 5], [1 -5 6], x(n));
+stem(n, y, 'o')
+figure(7)
+c = conv(x,y);
+clf;
+stem(n,c,'k');

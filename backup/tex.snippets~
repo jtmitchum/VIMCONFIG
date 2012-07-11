@@ -1,0 +1,18 @@
+extends tex
+snippet art "Preamble for Article Class" !b
+`cp ~/Documents/Dropbox/scripts/artamble.tex artamble.tex`
+\input{artamble.tex}
+\title{$1}
+\author{$2}
+\date{$3}
+\maketitle
+$4
+endsnippet
+
+snippet it "Another List Item" 
+\item 
+endsnippet
+
+snippet $$ "Proper Math environment"
+\($0\)
+endsnippet

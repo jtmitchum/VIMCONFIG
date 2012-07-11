@@ -1,0 +1,49 @@
+\documentclass[14pt]{memoir}
+\renewcommand{\PoemTitlefont}{%
+\normalfont\scshape\flushleft% Remove centering from poem title
+\hspace*{0.5\linewidth}\hspace*{-0.5\versewidth}}% Makes poem title flush left with body block.
+
+\setlength{\afterPoemTitleskip}{0.7\onelineskip}% Changes the vertical space between the poem title and poem body
+
+\title{Poems}
+
+\author{jt mitchum}
+\date{}
+\newpage
+\begin{document}
+
+\maketitle
+	\settowidth{\versewidth}{tender still to newer things}
+	\PlainPoemTitle
+	\PoemTitle{chain around a tree}
+	\begin{verse}[\versewidth]
+		At ten years old\\
+		my eyes open wide,\\
+		tender still to newer things,\\
+		stranger things and lusting\\
+		for those dangerous things\\
+	\end{verse}
+	\begin{verse}[\versewidth]
+		the thinnest film, a sinew\\
+		a membrane of the earlist\\
+		type, no stronger a fabric\\
+		to wrap my newest commandments\\
+	\end{verse}
+	\begin{verse}[\versewidth]
+		the curve of hair, the length\\
+		of angle that curves her\\
+		neck, a teasing angle of\\
+		chin with contours my eyes\\
+		travel \\
+	\end{verse}		
+	\begin{verse}[\versewidth]
+		before those wandering eyes, \\
+		in earlier years of youth    \\
+		grandpa bear chained a sapling.\\
+		loose and roomy, a toddler in\\ 
+		father's shoes - ridiculous. \\
+	\end{verse}
+	\begin{verse}[ \versewidth ]
+		like a chain around a tree
+	\end{verse}
+\end{document}

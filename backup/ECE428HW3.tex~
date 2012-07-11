@@ -1,0 +1,249 @@
+
+%  Created by James Mitchum on 2011-03-14.
+%  
+\documentclass[titlepage, 12pt]{article}
+
+%Fonts set-up per Mr. Mitchum
+\usepackage{kpfonts}
+\renewcommand{\familydefault}{\sfdefault}
+% Use utf-8 encoding for foreign characters
+\usepackage[utf8]{inputenc}
+\usepackage{enumerate}
+% Setup for fullpage use
+\usepackage{fullpage}
+\usepackage{color}
+\usepackage{xcolor}
+% Uncomment some of the following if you use the features
+%
+% Running Headers and footers
+%\usepackage{fancyhdr}
+% Multipart figures
+%\usepackage{subfigure}
+% More symbols
+%\usepackage{amsmath}
+%\usepackage{amssymb}
+%\usepackage{latexsym}
+% Surround parts of graphics with box
+\usepackage{boxedminipage}
+\usepackage{listings}
+% Package for including code in the document
+\usepackage{caption}
+\DeclareCaptionFont{white}{\color{white}}
+\DeclareCaptionFormat{listing}{\colorbox{gray}{\parbox{\textwidth}{#1#2#3}}}
+\captionsetup[lstlisting]{format=listing,labelfont=white,textfont=white}
+% \DeclareCaptionFont{white}{\color{white}}
+% \DeclareCaptionFormat{listing}{\colorbox[cmyk]{0.43, 0.35, 0.35,0.01}{\parbox{\textwidth}{\hspace{15pt}#1#2#3}}}
+% \captionsetup[lstlisting]{format=listing,labelfont=white,textfont=white, singlelinecheck=false, margin=0pt, font={bf,footnotesize}}
+\usepackage{fancyvrb}
+
+\usepackage{courier}
+\lstset{
+%n		language=({[x86MASM]Assembler}),
+basicstyle=\footnotesize\ttfamily,
+numbers=left,
+numberstyle=\tiny,
+frame=tb,
+columns=fullflexible,
+showstringspaces=false,
+stepnumber = 2,
+breaklines=true
+}
+% If you want to generate a toc for each chapter (use with book)
+% \usepackage{minitoc}
+
+% This is now the recommended way for checking for PDFLaTeX:
+\usepackage{ifpdf}
+
+%\newif\ifpdf
+%\ifx\pdfoutput\undefined
+%\pdffalse % we are not running PDFLaTeX
+%\else
+%\pdfoutput=1 % we are running PDFLaTeX
+%\pdftrue
+%\fi
+\ifpdf 
+\usepackage[pdftex]{graphicx} \else 
+\usepackage{graphicx} \fi
+
+\title{ECE 428 Spring 2011\\ Homework 3\\} 
+\author{J.T. Mitchum\\Student ID: 16054285}
+
+\date{Due on: April 10, 2012}
+
+\begin{document}
+
+\ifpdf \DeclareGraphicsExtensions{.pdf, .jpg, .tif} \else \DeclareGraphicsExtensions{.eps, .jpg} \fi
+
+\maketitle
+
+\section{Chapter 9}
+\subsection{Question 2} % (fold)
+\label{sub:question_12}
+The TCNT of the HCS12 is a 16-bit free running counter.
+% subsection question_12 (end)
+
+\subsection{Question 7} % (fold)
+\label{sub:question_14}
+The HCS12 TCNT is enabled as soon as the device recieves power. The count can be accessed by \lstinline!LDX TCNT;! for example. 
+\subsection{Question 9} % (fold)
+\label{sub:Question9}
+The TSCR2 value for no wait, no interrupt and no prescalers is \lstinline!0000 0000!. 
+
+\subsection{Question 10b} % (fold)
+\label{sub:Question0b}
+If the crystal oscillator (XTAL) is operating at 8 MHz, then the timer's clock frequency is 4 MHz and the period is $(4 MHz)^{-1}$ or $0.25 \mu s$. 
+\subsection{Question 18} % (fold)
+\label{sub:Question18}
+The counter increments every $(4Mhz)^{-1}$ or every $ 0.25 \mu s$ so the delay is $\frac{5ms}{0.25\mu s}$ or 20,000 clocks if no prescaler is used. Using a Prescaler value of 128, that brings the clocks down to 156.25 clocks, which can be set on TC1 by \lstinline~LDD #128; STDD TC1;~.
+\subsection{Question 23} % (fold)
+\label{sub:Question23}
+If XTAL = 8 MHz, then the initial clock before the prescaler is 4 MHz. With a prescaler of 4, the clock is further decreased to 1Mhz or $1\mu s$. 
+\subsection{Question 26} % (fold)
+\label{sub:Question26}
+XTAL = 4 MHz, so then $T= 0.5\mu s$. At 1kHz, $T = 1 ms$. For the high portion of the duty cycle, the clocks needed with no prescaler is $\frac{0.4ms}{0.5\mu s}$. 800 clocks for the high portion and 1200 cycles for the down cycle. Using a prescaler of 128, for a new frequency of $31,250 Hz$ and a period of $T= 0.32 \mu s$. For the new prescaler, Channel 4 will need 12.5 clocks for the up and 18.75 clocks for the down peiriod. 
+\begin{lstlisting}
+	LDAA #$80; 
+	STAA TSCR1	;enable timer
+	LDAA #$07	; prescaler of 128
+	STAA TSCR2
+	BSET TIOS, %000010000	; set channel 4 for compare
+	LDAA #$02
+	STAA TCTL1
+	LDD TCNT
+	ADDD #13	; rounded up
+	STD TC4
+HERE	BRCLR, TFLG1, mTFLG1_C4F, HERE
+	BSET TFLG1, %00010000
+	LDAA #$03
+	STAA TCTL1
+	LDD TCNT
+	ADDD #19
+	STD TC4
+HERE2	BRCLR TFLG1,mTFLG1_C4F, HERE2
+BSET TFLG1, %00010000
+
+\end{lstlisting}
+\subsection{Question 28c} % (fold)
+\label{sub:Question28c}
+For a prescaler of 8, the period is thus: XTAL of 8Mhz/2 = 4Mhz. 4Mhz/8 = 500kHz. $\frac{1}{500kHz} = 2 \mu s$. 
+\subsection{Question 36} % (fold)
+\label{sub:Question36}
+The selection of Output Compare/Input Capture function is done by manipulating the bits of the \textbf{TIOS} register. We select Channel 3 for Input Capture thus:
+\begin{lstlisting}
+	LDAA %0000 1000
+	STAA TIOS
+\end{lstlisting}
+\subsection{Question 48} % (fold)
+\label{sub:Question48}
+\begin{lstlisting}
+	count ds.b 1
+	LDAA #$FF	; PORTA out
+	STAA DDRA
+	STAA DDRB	; PORT B out as well
+	
+	BCLR DDRT,%10000000
+	LDAA #%01010000
+	STAA PACT
+	LDD #$E0B1
+	STD PACN32
+
+	BRCLR PAFLG, mPAFLG_PAOVF, HERE
+	BSET PAFLG, mPAFLG_PAOVF
+HERE	BSET PORTB, PACN32
+        BSET PORTA, PACN32
+
+\end{lstlisting}
+\section{Chapter 10} % (fold)
+\label{sec:Chapter10}
+\subsection{Question 15} % (fold)
+\label{sub:Question15}
+There are 80X25 characters on each page, and each character is transmitted with a start bit and 1 stop bit. 
+80 characters, therefore, are 800 bits of data. Each page, then, has 800 X 25 bits. 20000 bits per page and that means there are 4000000 bits total in 200 pages. 
+\subsection{Question 16} % (fold)
+\label{sub:Question16}
+The time is equal to 4000000/9600 bps = 416.7 seconds or about 7 minutes. 
+\subsection{Question 38} % (fold)
+\label{sub:Question38}
+XTAL = 4 MHz, $\therefore \; 1200 bps = \frac{4 MHz}{2\times 16 \times X} \; \therefore X \approx 104$
+\begin{lstlisting}
+	LDAA #$00
+	STAA SCI0BDH
+	LDAA #$68
+	STAA SCI0BDL
+	LDAA #$ 0
+	STAA SCI0CR1
+	LDAA #$0C
+	STAA SCI0CR2
+OVER	LDAA #'G'
+HERE	BRCLR SCIOSR1, mSCI0SR1_TDRE, HERE
+	STAA SCI0DRL
+	BRA OVER
+\end{lstlisting}
+\subsection{Question 44} % (fold)
+\label{sub:Question44}
+\lstinline!BRCLR #\$FF! should stop data reception
+\subsection{Question 47d} % (fold)
+\label{sub:Question47d}
+Find the SCIBD for a baud rate of 56000 and a PLL = 20 MHz
+$56000 \times SCIBD = \frac{20 MHz}{2\times 16} \therefore SCIBD = 11.161$ or $0B Hex$.
+\subsection{Question 49d} % (fold)
+\label{sub:Question49d}
+$Error = \frac{11.161 - 11}{11}\times 100 = 1.416\%$
+\section{Chapter 11} % (fold)
+\label{sec:Chapter11}
+\subsection{Question 5} % (fold)
+\label{sub:Question5}
+FFF8-9
+\subsection{Question 6} % (fold)
+\label{sub:Question6}
+FFF2-3
+\subsection{Question 7} % (fold)
+\label{sub:Question7}
+FFF4-5
+\subsection{Question 12} % (fold)
+\label{sub:Question12}
+SEI
+\subsection{Question 17} % (fold)
+\label{sub:Question17}
+3E6C
+\subsection{Question 23} % (fold)
+\label{sub:Question23}
+3E72 \& 3E74
+\subsection{Question 42} % (fold)
+\label{sub:Question42}
+3E56 and 2 bytes are alloted for it. 
+\subsection{Question 43} % (fold)
+\label{sub:Question43}
+the I bit
+CLI
+\subsection{Question 55} % (fold)
+\label{sub:Question55}
+The XIRQ is reponded to first and then the IRQ is executed. 
+% subsection Question 55 (end)
+% subsection Question 43 (end)
+% subsection Question 42 (end)
+% subsection Question 23 (end)
+% subsection Question 17 (end)
+% subsection Question 12 (end)
+% subsection Question 7 (end)
+% subsection Question 6 (end)
+% subsection Question 5 (end)
+% section Chapter 11 (end)
+% subsection Question 49d (end)
+% subsection Question 47d (end)
+% subsection Question 44 (end)
+% subsection Question 38 (end)
+% subsection Question 16 (end)
+% subsection Question 15 (end)
+% section Chapter 10 (end)
+% subsection subsection name (end)
+% subsection Question 48 (end)
+% subsection Question 36 (end)
+% subsection Question 28c (end)
+% subsection Question 26 (end)
+% subsection Question 23 (end)
+% subsection Question 18 (end)
+% subsection Question 10b (end)
+% subsection Question 9 (end)
+% subsection question_14 (end)
+\end{document} 

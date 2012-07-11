@@ -1,0 +1,18 @@
+% James Mitchum Lab 12 pt3
+%
+
+n = 1:20;
+x = cos(2*pi*n/10);
+y = fft(x,128);
+n=0:1:length(y)-1;
+plot(n,y, 'b--')
+hold;
+n = 1:40;
+x = cos(2*pi*n/10);
+y = fft(x,128);
+n=0:1:length(y)-1;
+plot(n,y,'r-')
+title('FFT of $cos(2 \times \pi \times \frac{n}{10})$', 'interpreter', 'Latex', 'FontSize', 18);
+legend('N = 20', 'N = 10');
+
+

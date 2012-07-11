@@ -1,0 +1,16 @@
+%James Mitchum - Computer Assignment ECE 302
+%Coaxial Cable - Code for LMR1200-DB
+j = fr;
+%Skin Depth will vary by frequency
+%initial range chosen arbitrarily - be sure to defend later
+freq=50e6:100:1e9;
+s_depth = inline('(freq^-1).*(1/sqrt(pi*mu*sigma))','freq', 'mu', 'sigma');
+R = inline('[((s_depth).*(1/(2*pi*sigma)))*(1/a + 1/b)', 's_depth','sigma','a','b');
+mu = 1;
+sigma = 5.8e7;
+a=0.0045;
+b=0.0117;
+s_depths=s_depth('freq', 'mu', 'sigma');
+s = 5;
+figure(n);
+plot(freq, R(s_depth, sigma, a, b));

@@ -1,0 +1,226 @@
+
+%  Created by James Mitchum on 2011-03-14.
+%  
+\documentclass[titlepage, 12pt]{article}
+
+%Fonts set-up per Mr. Mitchum
+\usepackage{kpfonts}
+\renewcommand{\familydefault}{\sfdefault}
+% Use utf-8 encoding for foreign characters
+\usepackage[utf8]{inputenc}
+
+% Setup for fullpage use
+\usepackage{fullpage}
+\usepackage{color}
+\usepackage{xcolor}
+% Uncomment some of the following if you use the features
+%
+% Running Headers and footers
+%\usepackage{fancyhdr}
+% Multipart figures
+%\usepackage{subfigure}
+% More symbols
+%\usepackage{amsmath}
+%\usepackage{amssymb}
+%\usepackage{latexsym}
+% Surround parts of graphics with box
+\usepackage{boxedminipage}
+\usepackage{listings}
+% Package for including code in the document
+\usepackage{caption}
+\DeclareCaptionFont{white}{\color{white}}
+\DeclareCaptionFormat{listing}{\colorbox{gray}{\parbox{\textwidth}{#1#2#3}}}
+\captionsetup[lstlisting]{format=listing,labelfont=white,textfont=white}
+% \DeclareCaptionFont{white}{\color{white}}
+% \DeclareCaptionFormat{listing}{\colorbox[cmyk]{0.43, 0.35, 0.35,0.01}{\parbox{\textwidth}{\hspace{15pt}#1#2#3}}}
+% \captionsetup[lstlisting]{format=listing,labelfont=white,textfont=white, singlelinecheck=false, margin=0pt, font={bf,footnotesize}}
+\usepackage{fancyvrb}
+
+\usepackage{courier}
+\lstset{
+language=Matlab,
+basicstyle=\footnotesize\ttfamily,
+numbers=left,
+numberstyle=\tiny,
+frame=tb,
+columns=fullflexible,
+showstringspaces=false,
+stepnumber = 2,
+breaklines=true
+}
+% If you want to generate a toc for each chapter (use with book)
+% \usepackage{minitoc}
+
+% This is now the recommended way for checking for PDFLaTeX:
+\usepackage{ifpdf}
+
+%\newif\ifpdf
+%\ifx\pdfoutput\undefined
+%\pdffalse % we are not running PDFLaTeX
+%\else
+%\pdfoutput=1 % we are running PDFLaTeX
+%\pdftrue
+%\fi
+\ifpdf 
+\usepackage[pdftex]{graphicx} \else 
+\usepackage{graphicx} \fi
+
+
+\title{ECE 381 Spring 2011\\ Lab 9: \\} 
+\author{J.T. Mitchum\\Student ID: 16054285}
+
+\date{Performed on: 03-14-2012\\Due on: 03-21-2012}
+
+\begin{document}
+
+\ifpdf \DeclareGraphicsExtensions{.pdf, .jpg, .tif} \else \DeclareGraphicsExtensions{.eps, .jpg} \fi
+
+\maketitle
+
+\section{Part 1}
+\begin{itemize}
+	\item Refer to Section M3.1 in the course textbook. Create Figures M3.1 and M3.2. Explain why Figure M3.2 looks as it does.
+	\item [A] Graph transformations do not work in Discrete systems like they would for continuous graphs. This graph does not represent a lateral shift the way a continuous graph might show a lateral shift.  
+\end{itemize}
+\lstinputlisting[title=MatLab code for Part 1 and Part 2]{ECE381Exp8.m}
+\begin{figure}[ht!]
+	\begin{center}
+		\includegraphics[width=7in]{part1.png}
+	\end{center}
+	\caption{Part 1 - Graphic for M3 -1}
+	\label{fig:part}
+\end{figure}
+\begin{figure}[ht!]
+	\begin{center}
+		\includegraphics[width=7in]{part1b.png}
+	\end{center}
+	\caption{Part 1 - Graphic for 3M.2}
+	\label{fig:part1b}
+\end{figure}
+
+\section{Part 2} % (fold)
+\label{sec:Part 2}
+Use the stem plot in MATLAB to plot the example given in the course notes where x[n] = u[n] – u[n-5]. Also plot x[n-3] and x[-n+2] over a suitable range of n to show the functions fully.
+% section Part 2 (end)label{sub:_x_t_u_t_1_u_t_1_:_h_t_u_t_:_2_u_2_:_y_3_}
+\begin{figure}[ht]
+	\centering
+		\includegraphics[width=7in]{part2.png}
+	\caption{Part 2}
+	\label{fig:Part2}
+\end{figure}
+\section{Part 3} % (fold)
+\label{sec:Part 3}
+Use the function in problem 3.M-1 at the end of Chapter 3. Note that the term “down sampling” is the same as decimation and “up sampling” is the same as interpolation. Plot f[n], f[2n], and f[n/2]. Plot f[n/2] in two forms – fe[n/2] and fi[n/2]. Use linear interpolation. Use a range on n from -10 to 20. It is recommended that you create a .m file here instead of trying to use an in-line function as the book recommends.
+\lstinputlisting[title=MatLab Code for Part 3]{ECE381Exp8pt3.m}
+\lstinputlisting[title=MatLab Code for Function in Part 3]{f_of_n.m}
+\begin{figure}[ht!]
+	\begin{center}
+		\includegraphics[width=7in]{part3.png}
+	\end{center}
+	\caption{Part 3 Initial function}
+	\label{fig:part 3}
+\end{figure}
+\begin{figure}[ht!]
+	\begin{center}
+		\includegraphics[width=7in]{part3a.png}
+	\end{center}
+	\caption{$F\left[ 2\times n \right]$ and $F\left[ \frac{n}{2} \right]$}
+	\label{fig:part3a}
+\end{figure}
+\begin{figure}[ht!]
+	\begin{center}
+		\includegraphics[width=7in]{part3b.png}
+	\end{center}
+	\caption{$F_e\left[ \frac{n}{2} \right]$ and $F_i\left[ \frac{n}{2} \right]$}
+	\label{fig:part3b}
+\end{figure}
+% section Part 3 (end)
+\section{Part 4} % (fold)
+\label{sec:Part 4}
+For problem (3), show the difference between the f[t/2] and fi[n/2]. Use the “plot” command here instead of the “stem” command. Use t = -10:0.01:40 and n=-10:40.
+\begin{figure}[ht!]
+	\begin{center}
+		\includegraphics[width=7in]{part4.png}
+	\end{center}
+	\caption{$F\left[ \frac{n}{2} \right]$ and $F_i\left[ \frac{t}{2} \right]$}
+	\label{fig:part4}
+\end{figure}
+\section{Part 5} % (fold)
+\label{sec:Part 5}
+Given is a function $x(t) = cos(1000.*\pi.*t)$ which has a frequency of 500 Hz. Use the following commands plot sampled versions of x(t) for various sampling rates, fs. Use t=0:0.0001:0.005. Use Nmax = 0.005*(fs) and n=0:Nmax.
+\lstinputlisting[title=MatLab Code for Part 5]{ECE381Exp8pt5.m}
+\begin{figure}[ht!]
+	\begin{center}
+		\includegraphics[width=7in]{part5_1.png}
+	\end{center}
+	\caption{250 Hz}
+	\label{fig:250Hz}
+\end{figure}
+\begin{figure}[ht!]
+	\begin{center}
+		\includegraphics[width=7in]{part5_2.png}
+	\end{center}
+	\caption{500 Hz}
+	\label{fig:500}
+\end{figure}
+\begin{figure}[ht!]
+	\begin{center}
+		\includegraphics[width=7in]{part5_3.png}
+	\end{center}
+	\caption{1000 Hz}
+	\label{fig:1000}
+\end{figure}
+% section Part 5 (end)
+\begin{figure}[ht!]
+	\begin{center}
+		\includegraphics[width=7in]{part5_4.png}
+	\end{center}
+	\caption{1500 Hz}
+	\label{fig:1500}
+\end{figure}
+
+\begin{figure}[ht!]
+	\begin{center}
+		\includegraphics[width=7in]{part5_5.png}
+	\end{center}
+	\caption{2000 Hz}
+	\label{fig:2000}
+\end{figure}
+
+\begin{figure}[ht!]
+	\begin{center}
+		\includegraphics[width=7in]{part5_6.png}
+	\end{center}
+	\caption{3000 Hz}
+	\label{fig:3000}
+\end{figure}
+
+\begin{figure}[ht!]
+	\begin{center}
+		\includegraphics[width=7in]{part5_7.png}
+	\end{center}
+	\caption{4000 Hz}
+	\label{fig:4000}
+\end{figure}
+\begin{figure}[ht!]
+	\begin{center}
+		\includegraphics[width=7in]{part5_8.png}
+	\end{center}
+	\caption{5000 Hz}
+	\label{fig:5000}
+\end{figure}
+\begin{figure}[ht!]
+	\begin{center}
+		\includegraphics[width=7in]{part5_9.png}
+	\end{center}
+	\caption{10000 Hz}
+	\label{fig:10000}
+\end{figure}
+\section{Conclusions} % (fold)
+\label{sec:Conclusions}
+Ostensibly, a higher sampling rate yields a result closer in digital form to that of its analogue form. What isn't clear from this graphing is whether some noise is actually eliminated in the loss of information at lower sampling rates. This information comes with no context, so I would pick the highest sampling rate given, but there may be occasions where such increases in data are less desirable. 
+
+In the given series, the DT equivalent data doesn't seem to compare favorably to the original signal up to 1.5 kHz. 
+
+% section Conclusions (end)
+\end{document}

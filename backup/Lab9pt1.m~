@@ -1,0 +1,79 @@
+% James Mitchum Lab 9 
+% Problem 1
+%y[n] - 0.64y[n-2] = 2x[n] + x[n-1]
+Hn = dtsim([2 1 0],[1 -0.64 0], 20)
+n= 1:20;
+figure(1)
+dtplot(n,Hn, 'o');
+title('H_n of y[n] - 0.64y[n-2] = 2x[n] + x[n-1]')
+ylabel('n');
+xlabel('H_n');
+
+% Problem 2
+%2y[n] - 1.28y[n-2] = x[n]. 
+
+Hn = dtsim([1 0 0],[2 -1.28 0],  20);
+
+figure(2)
+dtplot(n, Hn, 'o');
+title('H_n of 2y[n] - 1.28y[n-2] = x[n]')
+ylabel('n');
+xlabel('H_n');
+
+%Problem 4 part a
+a=1.2;
+ n = 0:60; sn = 0.1*n + sin(0.1*n*pi);
+ wn = rand(size(sn)); % rand(M,N) returns an M-by-N matrix of pseudo-
+                     % random numbers uniformly distributed over the
+                     % interval [0,1)
+wn = wn - 0.5;       % subtract 0.5 to make zero-mean noise
+wn = a*wn;           % multiply by a to make noise stronger (a > 1)
+                     % or weaker (0 < a < 1)
+xn = sn + wn;
+figure(3)
+plot(n,sn,'- .',n,xn,'-');
+snr = sum((sn-0.1*n).^2);       % pure sinusoidal power in the signal
+snr = 10*log10(snr/sum((xn-sn).^2)); % divide by noise power
+title(['Lab09a: Original noisy signal (SNR = ' ...
+        num2str(snr) ' dB)']);
+%Problem 4 part c
+%y[n] = 0.25x[n] + 0.25x[n-1] + 0.25x[n-2] + 0.25x[n-3]
+
+
+Hnx = dtsim([0.25 0.25 0.25 0.25], [1 0 0 0], xn);
+figure(4)
+plot(n, sn, '-.');
+hold on;
+dtplot(n, Hnx, 'o')
+snr = sum((sn-0.1*n).^2);       % pure sinusoidal power in the signal
+snr = 10*log10(snr/sum((xn-sn).^2)); % divide by noise power
+title(['Lab09b: Original noisy signal (SNR= ' num2str(snr) ' dB)']);
+
+%Problem 4 part d
+%y[n] = 0.4x[n] + 0.3x[n-1] + 0.2x[n-2] + 0.1x[n-3].
+%
+Hnx = dtsim([0.4 0.3 0.2 0.1], [1 0 0 0], xn);
+figure(5)
+plot(n, sn, '-.');
+hold on;
+dtplot(n, Hnx, 'o')
+snr = sum((sn-0.1*n).^2);       % pure sinusoidal power in the signal
+snr = 10*log10(snr/sum((xn-sn).^2)); % divide by noise power
+title(['Lab09c: Original noisy signal (SNR= ' num2str(snr) ' dB)']);
+ylabel('H[n] for y[n] = 0.4x[n] + 0.3x[n-1] + 0.2x[n-2] + 0.1x[n-3]')
+xlabel('n')
+figure(6)
+
+
+%Problem 4 part E
+%y[n] - 0.6y[n-1] = 0.4x[n].
+%
+Hnx = dtsim([0.4 0  ], [1 -0.6 ], xn);
+plot(n, sn, '-.');
+hold on;
+dtplot(n, Hnx, 'o')
+snr = sum((sn-0.1*n).^2);       % pure sinusoidal power in the signal
+snr = 10*log10(snr/sum((xn-sn).^2)); % divide by noise power
+title(['Lab09d: Original noisy signal (SNR= ' num2str(snr) ' dB)']);
+xlabel('n');
+ylabel('H[n] for y[n] - 0.6y[n-1] = 0.4x[n]');

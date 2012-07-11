@@ -1,0 +1,6 @@
+function [y] = sincy(x);
+	% sincy function needs a value
+	% computes the sinc function, y = sin(x)/x
+y = ones(size(x)); i=find(x~=0);
+y(i) = sin(x(i))./(x(i));
+

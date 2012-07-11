@@ -7,24 +7,10 @@
 
 # hlsearch on (H) or off (h):
 ~h
-# Last Search Pattern:
-~MSle0~/tcolorbox
-
 # Command Line History (newest to oldest):
 :q
-:w
-:Errors
-:errors
-:b4
-:so%
-:h tab
-:b1
 
 # Search String History (newest to oldest):
-??tcolorbox
-?/\vshiftwidth
-?/\vnocompa
-?/\vtab
 
 # Expression History (newest to oldest):
 
@@ -33,140 +19,9 @@
 # Input Line History (newest to oldest):
 
 # Registers:
-"1	LINE	0
-		\end{listing}
-"2	LINE	0
-		\begin{listing}
-"3	LINE	0
-	set nocompatible
-""-	CHAR	0
-	t
 
 # File marks:
-'0  19  1  ~/NERD_tree_1
-'1  93  7  ~/Documents/Dropbox/scripts/LatexTemplate.tex
 
 # Jumplist (newest first):
--'  19  1  ~/NERD_tree_1
--'  23  2  ~/NERD_tree_1
--'  1  1  ~/NERD_tree_1
--'  1  0  ~/Documents/Dropbox/scripts/LatexTemplate.tex
--'  93  7  ~/Documents/Dropbox/scripts/LatexTemplate.tex
--'  1  10  ~/-MiniBufExplorer-
--'  2  10  ~/-MiniBufExplorer-
--'  90  2  ~/Documents/Dropbox/scripts/LatexTemplate.tex
--'  50  111  ~/Documents/Dropbox/scripts/LatexTemplate.tex
--'  88  0  ~/Documents/Dropbox/scripts/LatexTemplate.tex
--'  92  5  ~/Documents/Dropbox/scripts/LatexTemplate.tex
--'  44  1  ~/Documents/Dropbox/scripts/LatexTemplate.tex
--'  89  8  ~/Documents/Dropbox/scripts/LatexTemplate.tex
--'  52  21  ~/Documents/Dropbox/scripts/LatexTemplate.tex
--'  91  0  ~/Documents/Dropbox/scripts/LatexTemplate.tex
--'  1  10  ~/-MiniBufExplorer-
--'  2  10  ~/-MiniBufExplorer-
 
 # History of marks within files (newest to oldest):
-
-> ~/Documents/Dropbox/scripts/LatexTemplate.tex
-	"	91	9
-	^	91	5
-	.	91	0
-	+	92	0
-	+	92	0
-	+	92	0
-	+	92	0
-	+	92	13
-	+	90	0
-	+	89	15
-	+	92	3
-	+	93	0
-	+	92	13
-	+	90	0
-	+	90	0
-	+	52	0
-	+	90	0
-	+	92	0
-	+	90	0
-	+	91	0
-
-> ~/NERD_tree_1
-	"	19	1
-	.	1	0
-	+	1	0
-	+	1	0
-	+	1	0
-	+	1	0
-	+	1	0
-	+	1	0
-	+	1	0
-	+	1	0
-	+	1	0
-
-> ~/.vimrc
-	"	35	4
-	^	147	12
-	.	147	11
-	+	40	0
-	+	5	38
-	+	1	16
-	+	71	0
-	+	148	14
-	+	149	0
-	+	150	0
-	+	150	0
-	+	149	39
-	+	150	40
-	+	143	16
-	+	144	11
-	+	147	11
-
-> ~/-MiniBufExplorer-
-	"	1	10
-	.	2	0
-	+	2	0
-	+	2	0
-	+	2	0
-	+	2	0
-	+	2	0
-	+	2	0
-	+	2	0
-	+	2	0
-	+	2	0
-	+	2	0
-	+	2	0
-	+	2	0
-	+	2	0
-	+	2	0
-	+	2	0
-	+	2	0
-	+	2	0
-	+	2	0
-	+	2	0
-	+	2	0
-	+	2	0
-	+	2	0
-	+	2	0
-	+	2	0
-	+	2	0
-	+	2	0
-	+	2	0
-	+	2	0
-	+	2	0
-	+	2	0
-	+	2	0
-	+	2	0
-	+	2	0
-	+	2	0
-	+	2	0
-	+	2	0
-	+	2	0
-	+	2	0
-	+	2	0
-	+	2	0
-	+	2	0
-
-> /usr/local/share/vim/vim73/doc/intro.txt
-	"	642	19
-
-> ~/Documents/Dropbox/scripts/LatexTemplate.log
-	"	1159	0

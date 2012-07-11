@@ -1,0 +1,145 @@
+
+%  Created by James Mitchum on 2011-03-14.
+%  
+\documentclass[titlepage, 12pt]{article}
+
+%Fonts set-up per Mr. Mitchum
+\usepackage{kpfonts}
+\renewcommand{\familydefault}{\sfdefault}
+% Use utf-8 encoding for foreign characters
+\usepackage[utf8]{inputenc}
+
+% Setup for fullpage use
+\usepackage{fullpage}
+\usepackage{color}
+\usepackage{xcolor}
+% Uncomment some of the following if you use the features
+%
+% Running Headers and footers
+%\usepackage{fancyhdr}
+% Multipart figures
+%\usepackage{subfigure}
+% More symbols
+%\usepackage{amsmath}
+%\usepackage{amssymb}
+%\usepackage{latexsym}
+% Surround parts of graphics with box
+\usepackage{boxedminipage}
+\usepackage{listings}
+% Package for including code in the document
+\usepackage{caption}
+\DeclareCaptionFont{white}{\color{white}}
+\DeclareCaptionFormat{listing}{\colorbox{gray}{\parbox{\textwidth}{#1#2#3}}}
+\captionsetup[lstlisting]{format=listing,labelfont=white,textfont=white}
+% \DeclareCaptionFont{white}{\color{white}}
+% \DeclareCaptionFormat{listing}{\colorbox[cmyk]{0.43, 0.35, 0.35,0.01}{\parbox{\textwidth}{\hspace{15pt}#1#2#3}}}
+% \captionsetup[lstlisting]{format=listing,labelfont=white,textfont=white, singlelinecheck=false, margin=0pt, font={bf,footnotesize}}
+\usepackage{fancyvrb}
+
+\usepackage{courier}
+\lstset{
+language=Matlab,
+basicstyle=\footnotesize\ttfamily,
+numbers=left,
+numberstyle=\tiny,
+frame=tb,
+columns=fullflexible,
+showstringspaces=false,
+stepnumber = 2,
+breaklines=true
+}
+% If you want to generate a toc for each chapter (use with book)
+% \usepackage{minitoc}
+
+% This is now the recommended way for checking for PDFLaTeX:
+\usepackage{ifpdf}
+
+%\newif\ifpdf
+%\ifx\pdfoutput\undefined
+%\pdffalse % we are not running PDFLaTeX
+%\else
+%\pdfoutput=1 % we are running PDFLaTeX
+%\pdftrue
+%\fi
+\ifpdf 
+\usepackage[pdftex]{graphicx} \else 
+\usepackage{graphicx} \fi
+
+
+\title{ECE 381 Spring 2011\\ Lab 11: BJT Amplifer with FeedBack\\} 
+\author{J.T. Mitchum\\Student ID: 16054285}
+
+\date{Performed on: 04-24-2012\\Due on: 04-24-2012}
+
+\begin{document}
+
+\ifpdf \DeclareGraphicsExtensions{.pdf, .jpg, .tif} \else \DeclareGraphicsExtensions{.eps, .jpg} \fi
+
+\maketitle
+\section{Experiment Data} 
+\label{sec:experiment_data}
+
+
+
+% section experiment_data (end)
+\begin{figure}
+\begin{center}
+    \includegraphics[width = 5 in]{Step25kHz440mV.png}
+\end{center}
+\caption{5 kHz signal with 440mV input}
+\label{fig:}
+\end{figure}
+\begin{figure}
+\begin{center}
+    \includegraphics[width = 5 in]{Step2NoFeedBack5kHztWITHPINKY.png}
+\end{center}
+\caption{5 kHz with adjustable resistor}
+\label{fig:}
+\begin{figure}
+\begin{center}
+    \includegraphics[width = 5 in]{step35kHzwithpot.png}
+\end{center}
+\caption{5 kHz with adjustable resistor}
+\label{fig:}
+\end{figure}
+\end{figure}
+\begin{figure}
+\begin{center}
+    \includegraphics[width = 5 in]{Step2NoFeedBack5kHzt.png}
+\end{center}
+\caption{5 kHz with no Feed Back}
+\label{fig:}
+\end{figure}
+\begin{figure}
+\begin{center}
+    \includegraphics[width = 5 in]{NoFeedBackStep3.png}
+\end{center}
+\caption{No Feedback with Adjustable resistor}
+\label{fig:}
+\end{figure}
+\begin{figure}
+	\begin{center}
+		\includegraphics[width=5in]{BodeFeedBack.png}
+	\end{center}
+	\caption{High End Bode Plot with FeedBack}
+\end{figure}
+\begin{figure}
+	\begin{center}
+		\includegraphics[width=5in]{BodeFeedBackLowEnd.png}
+	\end{center}
+	\caption{Low End Bode Plot with FeedBack}
+\end{figure}
+\begin{figure}
+	\begin{center}
+		\includegraphics[width=5in]{BodeNoFeedBackLowEnd.png}
+	\end{center}
+	\caption{Low End Bode Plot with no FeedBack}
+\end{figure}
+\begin{figure}
+	\begin{center}
+		\includegraphics[width=5in]{NoFeedBackUpperEndBodet.png}
+	\end{center}
+	\caption{High End Bode Plot with no FeedBack}
+\end{figure}
+
+\end{document}

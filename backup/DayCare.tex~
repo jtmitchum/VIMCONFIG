@@ -1,0 +1,13 @@
+
+\input{artamble}
+\usepackage{lscape}
+\maketitle
+\begin{document}
+\begin{landscape}
+	\begin{tabular}{p{5cm} c c c c c c c }
+	\textbf{School} &\textbf{Cost/wk} &\textbf{Pick up?}  &\textbf{Security}  &\textbf{Enroll By?}  &\textbf{Summer Break?} & \textbf{Sick Policy} & \textbf{Cover Snow Days?} \\ \hline 
+	Little Treasures Learning Center\12480 BlackBob \\ 829-0739 & 
+\end{tabular}	
+\end{landscape}
+
+\end{document}

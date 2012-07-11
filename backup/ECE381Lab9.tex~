@@ -1,0 +1,168 @@
+
+%  Created by James Mitchum on 2011-03-14.
+%  
+\documentclass[titlepage, 12pt]{article}
+
+%Fonts set-up per Mr. Mitchum
+\usepackage{kpfonts}
+\renewcommand{\familydefault}{\sfdefault}
+% Use utf-8 encoding for foreign characters
+\usepackage[utf8]{inputenc}
+
+% Setup for fullpage use
+\usepackage{fullpage}
+\usepackage{color}
+\usepackage{xcolor}
+% Stops floats from going into other sections - must print them out prior to new section
+\usepackage[section]{placeins} 
+% Uncomment some of the following if you use the features
+%
+% Running Headers and footers
+%\usepackage{fancyhdr}
+% Multipart figures
+%\usepackage{subfigure}
+% More symbols
+%\usepackage{amsmath}
+%\usepackage{amssymb}
+%\usepackage{latexsym}
+% Surround parts of graphics with box
+\usepackage{boxedminipage}
+\usepackage{listings}
+% Package for including code in the document
+\usepackage{caption}
+\DeclareCaptionFont{white}{\color{white}}
+\DeclareCaptionFormat{listing}{\colorbox{gray}{\parbox{\textwidth}{#1#2#3}}}
+\captionsetup[lstlisting]{format=listing,labelfont=white,textfont=white}
+% \DeclareCaptionFont{white}{\color{white}}
+% \DeclareCaptionFormat{listing}{\colorbox[cmyk]{0.43, 0.35, 0.35,0.01}{\parbox{\textwidth}{\hspace{15pt}#1#2#3}}}
+% \captionsetup[lstlisting]{format=listing,labelfont=white,textfont=white, singlelinecheck=false, margin=0pt, font={bf,footnotesize}}
+\usepackage{fancyvrb}
+
+\usepackage{courier}
+\lstset{
+language=Matlab,
+basicstyle=\footnotesize\ttfamily,
+numbers=left,
+numberstyle=\tiny,
+frame=tb,
+columns=fullflexible,
+showstringspaces=false,
+stepnumber = 2,
+breaklines=true
+}
+% If you want to generate a toc for each chapter (use with book)
+% \usepackage{minitoc}
+
+% This is now the recommended way for checking for PDFLaTeX:
+\usepackage{ifpdf}
+
+%\newif\ifpdf
+%\ifx\pdfoutput\undefined
+%\pdffalse % we are not running PDFLaTeX
+%\else
+%\pdfoutput=1 % we are running PDFLaTeX
+%\pdftrue
+%\fi
+\ifpdf 
+\usepackage[pdftex]{graphicx} \else 
+\usepackage{graphicx} \fi
+
+
+\title{ECE 381 Spring 2011\\ Lab 9: Discrete-Time system response by Recursion\\} 
+\author{J.T. Mitchum\\Student ID: 16054285}
+
+\date{Performed on: 04-04-2012\\Due on: 04-11-2012}
+
+\begin{document}
+
+\ifpdf \DeclareGraphicsExtensions{.pdf, .jpg, .tif} \else \DeclareGraphicsExtensions{.eps, .jpg} \fi
+
+\maketitle
+
+\section{Part 1}
+\begin{itemize}
+	\item A relaxed discrete-time system is described by the following difference equation: \begin{equation}
+		y[n] - 0.64y[n-2] = 2x[n] + x[n-1]
+	\end{equation}
+	\item Obtain the impulse response h1[n] of this system for 0 ≤ n ≤ 20. Use the function dtsim as explained in the preparatory notes. 
+	\item Make a stem plot of h1[n] versus n. (You can use stem or dtplot for that.)
+\end{itemize}
+\lstinputlisting[title=MatLab Code for All sections]{Lab9pt1.m}
+\begin{figure}
+	\centering
+	\includegraphics[width=6.5 in]{PArt1.png}
+\end{figure}
+\section{Part 2} % (fold)
+\label{sec:Part 2}
+\begin{itemize}
+	\item Another relaxed discrete-time system is described by the following difference equation:
+		\begin{equation}
+			2y[n] - 1.28y[n-2] = x[n]
+		\end{equation}
+	\item Obtain the impulse response h2[n] of this system for 0 ≤ n ≤ 20 using dtsim as in Exercise 1, and similarly, make a stem plot of h2[n] versus n.
+\end{itemize}
+\begin{cener}
+	\centering
+	\includegraphics[width=6.5 in]{Part2.png}
+\end{cener}
+\section{Part 3} % (fold)
+\label{sec:Part 3}
+Explain the relationship between h1[n] and h2[n] obtained in Exercises 1 and 2, respectively. In particular, can you express h1[n] in terms of h2[n]? Verify your answer numerically
+\begin{equation}
+	h_2[n] = 2\times h_1[n] + x[n-1]
+\end{equation}
+% section Part 3 (end)
+\section{Part 4} % (fold)
+\label{sec:Part 4}
+This exercise is about filtering out the noise from a discrete-time signal corrupted by a zero-mean white noise process.
+\begin{itemize}
+	\item [a]  First, construct a MATLAB vector for the noise-free signal s[n] = 0.1n + sin(0.1nπ), 0 ≤ n ≤ 60:
+	\item [b] n = 0:60; sn = 0.1*n + sin(0.1*n*pi);
+	\item [c] Now consider:
+			\begin{equation}
+				y[n] = 0.25x[n] + 0.25x[n-1] + 0.25x[n-2] + 0.25x[n-3].
+			\end{equation}
+
+	\item[d] \begin{equation}
+		y[n] = 0.4x[n] + 0.3x[n-1] + 0.2x[n-2] + 0.1x[n-3].
+	\end{equation}
+	\item[e] \begin{equation}
+		y[n] - 0.6y[n-1] = 0.4x[n]n	
+	\end{equation}
+\end{itemize}
+\begin{figure}
+	\centering
+	\includegraphics[width=6.5 in]{Problem4ptA.png}
+	\caption{Part 4 A}
+\end{figure}
+\begin{figure}
+	\centering
+	\includegraphics[width=6.5 in]{Problem4ptB.png}
+	\caption{Part 4B}
+\end{figure}
+\begin{figure}
+	\centering
+	\includegraphics[width= 6.5 in]{Problem4ptC.png}
+	\caption{Problem 4 C}
+\end{figure}
+\begin{figure}
+	\centering
+	\includegraphics[width=6.5 in]{Problem4ptD.png}
+	\caption{Problem 4 D}
+\end{figure}
+% section Part 4 (end)
+% section Part 2 (end)
+\subsection{i} % (fold)
+\label{sub:i}
+The weighted floating average suppression method appeared to be the most effective at both eliminating the noise and finding the appropriate signal curve. The results were small at this leve, but various level adjustments to the variable $a$ would probably demonstrate a greater ability.
+% subsection i (end)
+\subsection{ii} % (fold)
+\label{sub:ii}
+We could take the difference of the integral of the actual curve and subtract away the integral of the filtered cuve and divide that by the integral of the actual curve again to establish a percent difference. 
+% subsection ii (end)
+\subsection{iii} % (fold)
+\label{sub:iii}
+Basically altering the noise and finding the one that handles variation the best. Perhaps the weighted floating point was best at this level of noise, but at higher or lower levels, might introduce it's own distortion. Ideally, a filter would not do anything if no noise was present, but that seems unlikely. 
+% subsection iii (end)
+\end{document}
+

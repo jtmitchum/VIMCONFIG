@@ -1,0 +1,20 @@
+alias mate='mate -rd'
+alias ls='ls -aFh'
+alias vim='mvim'
+export CLICOLOR=1
+export PATH = "/usr/local/bin:/usr/local/sbin:$PATH"
+export LSCOLORS="ExFxCxDxBxegedabagacad";
+export LSCOLORS
+export EDITOR=vim
+# Setting a /usr/local/ path first - wnat these programs if possible first. 
+
+if [[ -s /Users/jt/.rvm/scripts/rvm ]] ; then source /Users/jt/.rvm/scripts/rvm ; fi
+
+test -r /sw/bin/init.sh && . /sw/bin/init.sh
+
+##
+# Your previous /Users/jt/.bash_profile file was backed up as /Users/jt/.bash_profile.macports-saved_2011-02-04_at_19:48:11
+##
+
+# Finished adapting your PATH environment variable for use with MacPorts.
+

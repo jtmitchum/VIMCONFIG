@@ -1,0 +1,19 @@
+%getting lambda for lab 7
+VGS = [2, 2.5, 3, 3.5, 4, 4.5, 5, 5.5, 6, 6.5, 7, 7.5, 8, 8.5, 9];
+IDG = 5.4e-3;
+IDN = [0.618e-3, 0.621e-3, 0.624e-3,0.627e-3, 0.63e-3, 0.632e-3, 0.634e-3, 0.636e-3, 0.638e-3, 0.64e-3, 0.642e-3, 0.642e-3, 0.644e-3, 0.646e-3, 0.648e-3,0.65e-3];
+lambda = inline('(ID - 0.6e-3)/(IDG - VGS * ID)', 'ID', 'IDG', 'VGS');
+for N = 1:numels(VGS)
+	nmoslams(N) = lambda(IDN(N), IDG, VGS(N));
+end
+N_lams = mean(nmoslams)
+
+IDP = [0.575e-3, 0.601e-3, 0.624e-3, 0.646e-3, 0.667e-3, 0.686e-3, 0.706e-3, 0.725e-3, 0.743e-3, 0.76e-3, 0.779e-3, 0.797e-3, 0.814e-3, 0.832e-3, 0.85e-3];
+
+for N = 1:numels(VGS)
+	pmoslams(N) = lambda(IDP(N), IDG, VGS(N));
+end
+
+P_lams = mean(pmoslams)
+
+

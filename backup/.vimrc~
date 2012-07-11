@@ -155,7 +155,6 @@ nmap <silent> <leader>sv :so $MYVIMRC<cr>
 "Leader Commands
 let g:miniBufExplMapCTabSwitchWindows = 1
 
-nmap <C-W>d <Plug>Kwbd
 nnoremap <tab> %
 vnoremap <tab> %
 nnoremap j gj

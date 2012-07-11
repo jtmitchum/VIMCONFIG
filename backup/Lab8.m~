@@ -1,0 +1,27 @@
+% James Mitchum ECE431 Lab 8 BJT Differential Amplifier Script
+%
+% Givens: One sided gain = 80 V/V
+%  	  \beta = 100, common mode gain < 0.1 V/V
+%  	  V_BE = 0.7V , V_A = 100V, V+ =9 V , V- = 0 ~ -9V
+%  	  V_CE - 0.3 V in forward active mode
+%  	  I_Q = 0.5 mA ~ 2 mA
+
+Vt = 0.026;
+Vp = 9;
+Va=100;
+B = 100;
+Vb = 0.7;
+Ad= 80;
+
+IQ = 0.5e-3;
+Vn = 0;
+Rb = 0;
+
+Io = IQ/(1+2/B);
+
+gm = (IQ/2)/Vt;
+r_pi = (B*Vt)/(IQ/2);
+Rc = (Ad*2*(r_pi))/B
+Ro = Va/(IQ/2)
+
+Acm= abs((-B*Rc)/(r_pi +2*(1+B)*Ro))

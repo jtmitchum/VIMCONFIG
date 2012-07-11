@@ -1,0 +1,155 @@
+
+%  Created by James Mitchum on 2011-03-14.
+%  
+\documentclass[titlepage, 12pt]{article}
+
+%Fonts set-up per Mr. Mitchum
+% Comment this out for serif fonts
+\usepackage{kpfonts}
+\renewcommand{\familydefault}{\sfdefault}
+
+% Use utf-8 encoding for foreign characters
+\usepackage[utf8]{inputenc}
+
+% Setup for fullpage use
+\usepackage{fullpage}
+\usepackage{color}
+\usepackage{xcolor}
+
+
+% Running Headers and footers
+%\usepackage{fancyhdr}
+% Multipart figures
+%\usepackage{subfigure}
+% More symbols
+%\usepackage{amsmath}
+%\usepackage{amssymb}
+%\usepackage{latexsym}
+
+% Surround parts of graphics with box
+\usepackage{boxedminipage}
+\usepackage{listings}
+% Package for including code in the document
+\usepackage{caption}
+\DeclareCaptionFont{white}{\color{white}}
+\DeclareCaptionFormat{listing}{\colorbox{gray}{\parbox{\textwidth}{#1#2#3}}}
+\captionsetup[lstlisting]{format=listing,labelfont=white,textfont=white}
+% \DeclareCaptionFont{white}{\color{white}}
+% \DeclareCaptionFormat{listing}{\colorbox[cmyk]{0.43, 0.35, 0.35,0.01}{\parbox{\textwidth}{\hspace{15pt}#1#2#3}}}
+% \captionsetup[lstlisting]{format=listing,labelfont=white,textfont=white, singlelinecheck=false, margin=0pt, font={bf,footnotesize}}
+\usepackage{fancyvrb}
+
+\usepackage{courier}
+\lstset{
+language=Matlab,
+basicstyle=\footnotesize\ttfamily,
+numbers=left,
+numberstyle=\tiny,
+frame=tb,
+columns=fullflexible,
+showstringspaces=false,
+stepnumber = 2,
+breaklines=true
+}
+% If you want to generate a toc for each chapter (use with book)
+% \usepackage{minitoc}
+
+% This is now the recommended way for checking for PDFLaTeX:
+\usepackage{ifpdf}
+
+\ifpdf 
+\usepackage[pdftex]{graphicx} \else 
+\usepackage{graphicx} \fi
+
+\title{ECE 429 Spring 2011\\ Experiment 7\\} 
+\author{J.T. Mitchum\\Student ID: 16054285}
+
+\date{Performed on: 04-17-2012\\Due on: 04-24-2012}
+
+\begin{document}
+
+\ifpdf \DeclareGraphicsExtensions{.pdf, .jpg, .tif} \else \DeclareGraphicsExtensions{.eps, .jpg} \fi
+
+\maketitle
+
+\section{Objective}
+To gain experience programming the HCS12 using combined knowledge gained throughout the semester. 
+\section{Equipment and Software} % (fold)
+\label{sec:equipment_and_software}
+\begin{itemize}
+	\item M68HC12 Board
+	\item miniIDE software
+	\item 5 volt power supply
+\end{itemize}
+% section equipment_and_software (end)
+\section{Procedure} % (fold)
+\label{sec:procedure}
+\subsection{Part 1} % (fold)
+\label{sub:part_1}
+
+A) Write a program to calculate n! and store the result in location \$0900 . Assume n=5. 
+
+\begin{center}
+	\centering
+	\lstinputlisting[title=Part A Code]{Lab7a.asm}
+\end{center}
+\begin{center}
+	\centering
+	\lstinputlisting[title=Part A listing]{Lab7A.lst}
+\end{center}
+\begin{center}
+	\centering
+	\lisinputlisting[title=Part A Output]{PartAOUT.txt}
+\end{center}
+% subsection part_1 (end)
+
+\subsection{Part 2} % (fold)
+\label{sub:Part 2}
+B) Write a program to find the two max elements from an array of 16 elements and to store them at memory location  \$0910 and \$0912.
+
+\begin{center}
+	\centering
+	\lstinputlisting[title=Part B Code]{Lab7B.asm}
+\end{center}
+\begin{center}
+	\centering
+	\lstinputlisting[title=Part B Listing]{Lab7B.lst}
+\end{center}
+\begin{center}
+	\centering
+	\lstinputlisting[title=Part B Output]{PartBOUT.txt}
+\end{center}
+\subsection{Part 3} % (fold)
+\label{sub:Part 3}
+C) Write a program to count the number of elements that are divisible by 4 in an array of N 8-bit numbers.
+% subsection Part 3 (end)
+\begin{center}
+	\centering
+	\lstinputlisting[title=Part C Code]{Lab7C.asm}
+\end{center}
+\begin{center}
+	\centering
+	\lstinputlisting[title=Part C Listing]{Lab7C.lst}
+\end{center}
+\begin{center}
+	\centering
+	\lstinputlisting[title=Part C Output]{PartCOUT.txt}
+\end{center}
+\subsection{Part 4} % (fold)
+\label{sub:Part 4}
+D) Write a program to count the number of ones contained in memory locations \$900~\$901 and save the result at memory location \$905.
+\begin{center}
+	\centering
+	\lstinputlisting[title=Part D Code]{Lab7D.asm}
+\end{center}
+\begin{center}
+	\centering
+	\lstinputlisting[title=Part D Listing]{Lab7D.lst}
+\end{center}
+\begin{center}
+	\centering
+	\lstinputlisting[title=Part D Output]{PartDOUT.txt}
+\end{center}
+% subsection Part 4 (end)
+% subsection Part 2 (end)
+\end{document} 
